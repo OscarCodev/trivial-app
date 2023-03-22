@@ -9,7 +9,11 @@ function App() {
     <>
       <h1>Trivial</h1>
       <p>{question.question}</p>
-    
+      <div>
+        {
+          question.answers.map(obj => <p><button>X</button>{" " + obj.txt}</p>)
+        }
+      </div>
     </>
   )
 }

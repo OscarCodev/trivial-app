@@ -1,12 +1,15 @@
 import { useState } from "react"
 import questions from './data/questions'
 import {Row, QuestionTxt, Box, Popup} from './styled'
+import { shuffleArray } from "./Utils";
 
 function App() {
 
+  const q = shuffleArray(questions);
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [visible, setVisible] = useState(false)
-  const question = questions[currentQuestion] // preguntas contiene a las preguntas en la posicion 0
+  const question = q[currentQuestion] // preguntas contiene a las preguntas en la posicion 0
 
   const clickedAnswer = (isRight) => {
 
@@ -30,7 +33,7 @@ function App() {
       <img src={question.img} width="300px"/>
       
       <div>
-        {question.answers.map(obj => (
+        {shuffleArray(question.answers).map(obj => (
             <Box>
             <p>
               <button
